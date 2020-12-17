@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app-descriptor>
+	<managed-classes>
+		<apps-manager interface="js.server.AppsManager" class="js.server.impl.AppsManagerImpl" />
+		<logs-manager interface="js.server.LogsManager" class="js.server.impl.LogsManagerImpl" />
+		<tasks-manager interface="js.server.TasksManager" class="js.server.impl.TasksManagerImpl" />
+		<apache-httpd interface="js.server.service.ApacheHttpd" class="js.server.service.ApacheHttpdImpl" />
+	</managed-classes>
+	<include file="app.xml" />
+</app-descriptor>

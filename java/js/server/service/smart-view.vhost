@@ -1,0 +1,38 @@
+<VirtualHost *:80>
+    ServerName ${web-context}
+
+    DocumentRoot /var/www/vhosts/${web-context}
+    DirectoryIndex index
+    <Directory "/var/www/vhosts/${web-context}">
+        allow from all
+        Options -Indexes
+    </Directory>
+
+    ProxyPassMatch (/.*\.(?:xsp|rmi))$ ajp://localhost:8009/${app-name}$1
+    ProxyPassReverseCookieDomain localhost ${web-context}
+    ProxyPassReverseCookiePath / /
+
+    RewriteEngine On
+
+# if not a generic link skip both rewrite rules
+    RewriteCond %{REQUEST_URI} !^/[^/\.]+$
+    RewriteRule .? - [S=2]
+
+# if mobile user agent convert generic link to .xsp
+    RewriteCond %{HTTP_USER_AGENT} "android|blackberry|googlebot-mobile|iemobile|ipad|iphone|ipod|opera mobile|palmos|webos" [NC]
+    RewriteRule ^(.+)$ ajp://localhost:8009/${app-name}$1.xsp [P,L]
+
+# default to .htm
+# note that this rule is skipped if link is not generic
+    RewriteRule ^(.+)$ /$1.htm [L]
+
+#    LogLevel trace8
+
+    ExpiresActive On
+    ExpiresByType text/html A2592000
+    ExpiresByType text/css A2592000
+    ExpiresByType application/javascript A2592000
+    ExpiresByType image/gif A2592000
+    ExpiresByType image/png A2592000
+    ExpiresByType image/jpg A2592000
+</VirtualHost>

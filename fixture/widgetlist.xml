@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsp stat="ok">
+	<list>
+		<widget id="kids_fables">
+			<title>kids_fables</title>
+			<description>Kids Fables</description>
+			<compression size="344023" type="zip"></compression>
+			<download>http://192.168.1.5/kids_fables_1.016_Europe_20151221.zip</download>
+		</widget>
+	</list>
+</rsp>

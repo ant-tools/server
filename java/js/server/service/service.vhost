@@ -1,0 +1,6 @@
+<VirtualHost *:80>
+    ServerName ${web-context}
+    ProxyPassMatch (/.*\.rmi)$ ajp://localhost:8009/${app-name}$1
+    ProxyPassReverseCookieDomain localhost ${web-context}
+    ProxyPassReverseCookiePath / /
+</VirtualHost>

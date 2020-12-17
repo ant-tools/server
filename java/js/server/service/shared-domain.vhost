@@ -1,0 +1,37 @@
+<VirtualHost *:80>
+    ServerName dev.sixqs.com
+    DocumentRoot /var/www/vhosts/sixqs.com
+
+    DirectoryIndex index.html
+    <Directory "/var/www/vhosts/sixqs.com">
+        allow from all
+        Options -Indexes
+
+        AuthType basic
+        AuthName "SixQs Development Server"
+        AuthUserFile "/var/www/vhosts/.htpasswd"
+        Require valid-user
+    </Directory>
+
+    <Location ~ ".*/export/.*">
+        Header set Content-Disposition attachment
+    </Location>
+
+    <Location ~ ".*/mobile/apps/.*">
+        Options +Indexes
+    </Location>
+
+    ProxyTimeout 1800
+
+    ProxyPassMatch ^(?:http\://[^/])?/site/(.*\.(?:xsp|rmi))$ ajp://localhost:8009/site/$1
+    ProxyPassMatch ^(?:http\://[^/]+)?/family-tree/(.*)$ ajp://localhost:8009/family-tree/$1
+    ProxyPassMatch .*/life-play/(.*\.(?:xsp|rmi))$ ajp://localhost:8009/life-play/$1
+    ProxyPassMatch ^(?:http\://[^/])?/designer/(.*\.(?:xsp|rmi))$ ajp://localhost:8009/designer/$1
+    ProxyPassMatch ^(?:http\://[^/])?/report/(.*\.(?:xsp|rmi))$ ajp://localhost:8009/report/$1
+    ProxyPassMatch ^(?:http\://[^/])?/js-admin/(.*\.(?:xsp|rmi))$ ajp://localhost:8009/js-admin/$1
+    ProxyPassMatch ^(?:http(?:s)?\://[^/]+)?/admin/(.*\.(?:xsp|rmi))$ ajp://localhost:8009/admin/$1
+    ProxyPassMatch ^(?:http\://[^/]+)?/dwp/(.*)$ ajp://localhost:8009/dwp/$1
+
+    ProxyPassReverseCookieDomain localhost/site dev.sixqs.com/site
+    ProxyPassReverseCookiePath /site /site
+</VirtualHost>

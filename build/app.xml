@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<app-descriptor>
+    <managed-classes>
+        <apps-manager class="js.server.impl.AppsManagerImpl" interface="js.server.AppsManager"/>
+        <logs-manager class="js.server.impl.LogsManagerImpl" interface="js.server.LogsManager"/>
+        <tasks-manager class="js.server.impl.TasksManagerImpl" interface="js.server.TasksManager"/>
+        <apache-httpd class="js.server.service.ApacheHttpdImpl" interface="js.server.service.ApacheHttpd"/>
+    </managed-classes>
+</app-descriptor>

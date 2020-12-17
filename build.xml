@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="server" default="all">
+	<include file="d://lib/tasks.xml" />
+	<property file="build.properties" />
+
+	<target name="usage">
+		<echo message="${DISPLAY}" />
+		<echo message="Project: ${NAME}" />
+		<echo message=" " />
+		<echo message="Available targets :" />
+		<echo message="- build : Build workspace content on ${BUILD} directory." />
+		<echo message="- clean : Remove all build generated files." />
+		<echo message="- sync  : Synchronize local build on development server." />
+		<echo message="- deploy: Update production server from development content." />
+		<echo message=" " />
+		<echo message="- usage : This text." />
+	</target>
+
+	<target name="all">
+		<antcall target="build-server" />
+		<antcall target="build-client" />
+	</target>
+
+	<target name="build-local-config">
+		<js.BuildConfig variant="local" />
+	</target>
+
+	<target name="build-resources">
+		<js.BuildResources site="${SITE}" naming="XMLNS" verbose="yes" />
+	</target>
+
+	<target name="build-local" depends="build-resources,build-local-config">
+		<jar destfile="${WAR}">
+			<zipfileset dir="${BIN}" excludes="**/test/" prefix="WEB-INF/classes" />
+			<zipfileset dir="${BUILD}" includes="app.xml,web.xml" prefix="WEB-INF" />
+			<zipfileset dir="${SITE}" />
+		</jar>
+	</target>
+
+	<target name="deploy-local" depends="build-local">
+		<copy file="${WAR}" todir="${RUNTIME}" />
+	</target>
+
+	<target name="build-server" depends="clean-all,build-resources">
+		<js.BuildConfig variant="server" />
+		<jar destfile="${WAR}">
+			<zipfileset dir="${BIN}" prefix="WEB-INF/classes" />
+			<zipfileset dir="${BUILD}" includes="app.xml,web.xml" prefix="WEB-INF" />
+			<zipfileset dir="${SITE}" />
+		</jar>
+	</target>
+
+	<target name="build-client">
+		<jar destfile="${CLIENT}">
+			<zipfileset dir="${BIN}" includes="**/client/,**/model/" />
+		</jar>
+		<copy file="${CLIENT}" todir="d://lib" />
+	</target>
+
+	<target name="clean-all">
+		<delete includeemptydirs="true" verbose="yes" failonerror="no">
+			<fileset dir="${BUILD}" includes="*/**" />
+		</delete>
+	</target>
+</project>

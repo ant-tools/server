@@ -1,0 +1,133 @@
+.app-header {
+	margin-bottom: 10px;
+}
+
+.app-header>.banner {
+	height: 100px;
+	text-align: right;
+	background-image: url(banner.jpg);
+	background-repeat: no-repeat;
+	background-color: #000000;
+	padding-right: 40px;
+}
+
+.app-header>nav {
+	margin-top: 4px;
+	width: 960px;
+	height: 40px;
+	background: linear-gradient(#AAA, #CCC, #AAA);
+	border-radius: 4px;
+}
+
+.app-header>nav a {
+	display: inline-block;
+	width: 140px;
+	height: 40px;
+	font-size: 20px;
+	line-height: 40px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
+	border-right: solid 1px #E8E8E8;
+	color: #008000;
+	text-shadow: 1px 1px 0 #D8D8D8;
+	letter-spacing: 1px;
+}
+
+.app-header>nav a:HOVER {
+	background: linear-gradient(#DDD, #AAA, #DDD);
+}
+
+.side-menu {
+	float: left;
+	width: 206px;
+	padding: 2px;
+}
+
+.side-menu nav {
+	margin-top: 20px;
+	border: solid 1px #E6E6E6;
+	padding: 2px;
+}
+
+.side-menu nav:first-child {
+	margin-top: 0px;
+}
+
+.side-menu nav a {
+	display: block;
+	height: 32px;
+	line-height: 32px;
+	width: 190px;
+	margin-bottom: 1px;
+	padding-left: 10px;
+	background-color: #EAEAEA;
+	background-position: left;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	text-shadow: 1px 1px 0 #FFFFFF;
+	transition: background-color 250ms;
+	-webkit-transition: background-color 250ms;
+	text-decoration: none;
+}
+
+.side-menu nav a:hover {
+	background-color: #808080;
+	color: white;
+	text-shadow: 1px 1px 0 #000;
+}
+
+.side-menu nav a:last-child {
+	margin-bottom: 0px;
+}
+
+.main-section {
+	float: left;
+	min-height: 500px; margin-left : 20px;
+	padding-left: 40px;
+	border-left: solid 1px #E6E6E6;
+	margin-left: 20px;
+}
+
+.view-container {
+	margin-top: 20px;
+	min-height: 500px;
+	min-width: 500px;
+	max-width: 800px;
+}
+
+.view-container h1 {
+	margin-bottom: 20px;
+	padding-bottom: 1px;
+	border-bottom: solid 1px #E6E6E6;
+}
+
+.app-footer {
+	position: relative;
+	clear: both;
+	margin-top: 10px;
+	padding-top: 4px;
+	text-align: right;
+	clear: both;
+	border-top: solid 1px #E6E6E6;
+}
+
+.app-footer .contact {
+	position: absolute;
+	left: 0px;
+	top: -90px;
+}
+
+.app-footer>nav {
+	display: inline-block;
+	float: left;
+}
+
+.app-footer>nav a {
+	xborder-left: solid 1px #E6E6E6;
+	display: inline-block;
+	float: right;
+	padding-right: 10px;
+	text-decoration: none;
+}

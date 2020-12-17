@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+    ServerName ${web-context}
+    DocumentRoot /var/www/vhosts/${web-context}
+    <Directory "/var/www/vhosts/${web-context}">
+        allow from all
+        Options -Indexes
+    </Directory>
+
+    ProxyPassReverseCookieDomain localhost ${app-name}
+    ProxyPassReverseCookiePath / /
+</VirtualHost>

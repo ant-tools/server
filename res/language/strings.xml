@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<string>
+	<title>Select Language</title>
+	<description>Click on flag to select desired language. You will be redirected to dashboard page.</description>
+	<en>English</en>
+	<fr>French</fr>
+	<de>German</de>
+	<ro>Romanian</ro>
+</string>

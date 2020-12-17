@@ -1,0 +1,9 @@
+<VirtualHost *:80>
+    ServerName ${web-context}
+    DocumentRoot /var/www/vhosts/${vhost}
+    DirectoryIndex index.html
+    <Directory "/var/www/vhosts/${vhost}">
+        allow from all
+        Options -Indexes
+    </Directory>
+</VirtualHost>
